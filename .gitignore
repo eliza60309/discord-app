@@ -1,0 +1,4 @@
+__pycache__/*
+*.pyc
+commands/__pycache__/*
+keys.py
