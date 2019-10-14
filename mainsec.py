@@ -14,6 +14,8 @@ from commands import honey
 from commands import payme
 from commands import gambl
 from commands import money
+from commands import joinv
+from commands import leave
 import keys
 async def on_loop():
 	await bot.wait_until_ready()
@@ -24,6 +26,8 @@ async def on_loop():
 	gambl.run(bot)
 	money.run(bot)
 	react.run(bot)
+	joinv.run(bot)
+	leave.run(bot)
 
 @bot.event
 async def on_ready():
