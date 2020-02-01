@@ -16,7 +16,9 @@ from commands import gambl
 from commands import money
 from commands import joinv
 from commands import leave
+import discord_events
 import keys
+
 async def on_loop():
 	await bot.wait_until_ready()
 	hello.run(bot)
@@ -35,6 +37,7 @@ async def on_ready():
 	print('[LOG] Logged in as ' + bot.user.name)
 	print('[LOG] User ID: ' + str(bot.user.id))
 	print('')
+	discord_events.run(bot)
 
 bot.loop.create_task(on_loop())
 bot.run(keys.TOKEN)

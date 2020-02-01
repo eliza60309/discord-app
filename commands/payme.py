@@ -13,7 +13,7 @@ def run(bot):
 		cursor.execute('select * from currency where user = %s' % str(context.message.author.id))
 		result = cursor.fetchall()
 		if(len(result) == 0):
-			cursor.execute('insert into currency (user, currency, paytime) values (%s, %s, %s)' % (str(context.message.author.id), str(100), str(round(time.time()))))
+			cursor.execute('insert into currency (user, currency, paytime, luck, lucktime) values (%s, %s, %s, %s, %s)' % (str(context.message.author.id), str(100), str(round(time.time())), 0, str(round(time.time()))))
 			db.commit()
 			await context.send('%s: 你領取了 100 ST的薪水，你的財產現在有 %s ST' % (context.message.author.mention, str(100)))
 			print('[LOG] %s invoked !payme, initialize' % context.message.author.name)
