@@ -56,21 +56,19 @@ def run(bot):
 			return
 
 		#handle prob of winning
-		prob = 45
+		prob = 50
 
 		#luck is valid (5 min)
 		if(round(time.time()) <= int(result[0][4]) + 300):
-			prob = 45 + int(result[0][3])
+			prob = 50 + int(result[0][3])
 		
 		#play the roulette
-
 		#wins
 		if(random.randint(1, 100) < prob):
 			cursor.execute('update currency set currency = %s where user = %s' % (str(int(result[0][1]) + stake), str(context.message.author.id)))
 			db.commit()
 			await context.send('%s: 耶～贏了 %s ST，開勳～\\\\(>w<)/\n餘額: %s ST' % (context.message.author.mention, str(stake).replace('64', '||64||'), str(int(result[0][1]) + stake).replace('64', '||64||')))
 			print('[LOG] %s invoked !gambl, won %s' % (context.message.author.name, stake))
-			print('[LOG] the prob is %s' % int(prob))
 			return
 
 		#loses
@@ -79,5 +77,4 @@ def run(bot):
 			db.commit()
 			await context.send('%s: 哭哭～輸了 %s ST，藍瘦香菇～(OwQ)\n餘額: %s ST' % (context.message.author.mention, str(stake).replace('64', '||64||'), str(int(result[0][1]) - stake).replace('64', '||64||')))
 			print('[LOG] %s invoked !gambl, lost %s' % (context.message.author.name, stake))
-			print('[LOG] the prob is %s' % int(prob))
 			return

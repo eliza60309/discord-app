@@ -31,16 +31,16 @@ def run(bot):
 		if(len(result) == 0):
 			
 			#init author's account
-			cursor.execute('insert into currency (user, currency, paytime, luck, lucktime) values (%s, %s, %s, %s, %s)' % (str(context.message.author.id), str(0), str(round(time.time()) - 3600), str(random.randint(1, 10)), str(round(time.time()))))
+			cursor.execute('insert into currency (user, currency, paytime, luck, lucktime) values (%s, %s, %s, %s, %s)' % (str(context.message.author.id), str(0), str(round(time.time()) - 3600), str(random.randint(1, 5)), str(round(time.time()))))
 			db.commit()
 			print('[LOG] %s invoked !honey, initialize' % context.message.author.name)
 		
 		#not first invoke
 		else:
-			cursor.execute('update currency set luck = %s, lucktime = %s where user = %s' % (str(random.randint(1, 10)), str(round(time.time())), str(context.message.author.id)))
+			cursor.execute('update currency set luck = %s, lucktime = %s where user = %s' % (str(random.randint(1, 5)), str(round(time.time())), str(context.message.author.id)))
 			db.commit()
 			print('[LOG] %s invoked !honey' % context.message.author.name)
 
 		#message
-		await context.send('你恭敬的獻上一顆哈密瓜\n你感覺自己的運氣變好了一點點\n現在祭壇上有%s顆哈密瓜了!!\n:melon:\\\\(>w<)/:melon:' % str(number))
+		await context.send('你恭敬的獻上一顆哈密瓜\n**你感覺自己的運氣變好了一點點**\n現在祭壇上有%s顆哈密瓜了!!\n:melon:\\\\(>w<)/:melon:' % str(number))
 

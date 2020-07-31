@@ -14,8 +14,10 @@ from commands import honey
 from commands import payme
 from commands import gambl
 from commands import money
-from commands import joinv
+from commands import join
 from commands import leave
+from commands import cov19
+from commands import lsuser
 import discord_events
 import keys
 
@@ -28,8 +30,10 @@ async def on_loop():
 	gambl.run(bot)
 	money.run(bot)
 	react.run(bot)
-	joinv.run(bot)
+	join.run(bot)
 	leave.run(bot)
+	cov19.run(bot)
+	lsuser.run(bot)
 
 @bot.event
 async def on_ready():
